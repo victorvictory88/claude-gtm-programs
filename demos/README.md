@@ -37,3 +37,14 @@ python demos/02_structured_program_plan.py --pretty
 
 - `account.json` — Acme Energy (fictional)
 - `program_inputs.json` — AMER mid-market AI discovery play inputs (fictional; TBD baselines on purpose)
+
+## Visual examples
+
+![Sample structured program plan JSON](../docs/images/program_plan_json.png)
+
+*Sample structured program plan JSON (matches demo 02 output shape).*
+
+![Seller play one-pager for fictional Northwind Retail](../docs/images/seller_play_card.png)
+
+*Related seller-play packaging example (skill output style).*
+

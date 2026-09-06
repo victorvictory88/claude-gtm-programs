@@ -23,3 +23,14 @@ python evals/harness.py
 ```
 
 Prints a JSON summary with per-case scores. Exit code `1` if a case does not match its `expect_pass` flag.
+
+## Visual examples
+
+![Eval harness terminal JSON summary](../docs/images/eval_harness_terminal.png)
+
+*Terminal-style view of the JSON summary from `python evals/harness.py`.*
+
+![Sample structured program plan JSON](../docs/images/program_plan_json.png)
+
+*Fixture-shaped program plan used by the offline evals.*
+

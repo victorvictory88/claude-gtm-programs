@@ -20,6 +20,32 @@ Fictional accounts only: **Acme Energy**, **Northwind Retail**. No real customer
 
 **Default demo model:** `claude-sonnet-4-20250514` (override with `--model`).
 
+
+## Visual examples
+
+Screenshots for interviewers who want a quick look without running code. Regenerate with `python scripts/generate_visuals.py` (needs `pillow`).
+
+![Repo architecture: skills, demos, evals, teaching](docs/images/architecture.png)
+
+*Repo map: skills, demos, evals, and teaching folders.*
+
+![Program baseline card for fictional Acme Energy](docs/images/program_baseline_card.png)
+
+*Sample program baseline card (Acme Energy, fictional).*
+
+![Seller play one-pager for fictional Northwind Retail](docs/images/seller_play_card.png)
+
+*One-page seller play mock (Northwind Retail, fictional).*
+
+![Eval harness terminal JSON summary](docs/images/eval_harness_terminal.png)
+
+*Offline eval summary from `python evals/harness.py`.*
+
+![Pretty sample structured program plan JSON](docs/images/program_plan_json.png)
+
+*Sample structured program plan JSON (from fixtures).*
+
+
 ## Quickstart
 
 ```bash
@@ -55,11 +81,11 @@ Each `SKILL.md` has YAML frontmatter (`name`, `description` starting with "use t
 
 ### Skills at a glance
 
-- **program-baseline** — lock metrics, owners, and scope before launch
-- **seller-play-packager** — turn a win pattern into a one-page seller play
-- **attribution-review** — monthly/quarterly readout with influence vs credit
-- **discovery-coach** — AI SaaS discovery questions and post-call capture
-- **enablement-outline** — session design with leading and lagging adoption metrics
+- **program-baseline** - lock metrics, owners, and scope before launch
+- **seller-play-packager** - turn a win pattern into a one-page seller play
+- **attribution-review** - monthly/quarterly readout with influence vs credit
+- **discovery-coach** - AI SaaS discovery questions and post-call capture
+- **enablement-outline** - session design with leading and lagging adoption metrics
 
 ## Demos
 
