@@ -1,0 +1,54 @@
+{
+  "name": "AMER Mid-Market AI Discovery Play",
+  "baseline": {
+    "audience": "AE + SE",
+    "geo": "AMER",
+    "segment": "Mid-market AI SaaS evaluations",
+    "launch_date": "2026-10-01",
+    "current_state_notes": "CRM discovery checklist field not live; baseline adoption is 0 until field ships. Analytics owner to confirm Stage 2 to Stage 3 cycle time before launch."
+  },
+  "metrics": [
+    {
+      "name": "Percent of qualified AMER mid-market opps with completed discovery checklist within 14 days of Stage 2",
+      "role": "primary",
+      "unit": "percent",
+      "baseline_value": "TBD pending CRM field",
+      "source": "CRM",
+      "owner": "GTM Analytics Partner"
+    },
+    {
+      "name": "Percent of target AEs who completed practice drill",
+      "role": "supporting",
+      "unit": "percent",
+      "baseline_value": 0,
+      "source": "Enablement LMS",
+      "owner": "AMER Seller Enablement Lead"
+    }
+  ],
+  "owners": {
+    "program": "GTM Programs Manager AMER",
+    "sales_sponsor": "AMER Mid-Market Sales Leader",
+    "enablement": "AMER Seller Enablement Lead",
+    "analytics": "GTM Analytics Partner"
+  },
+  "milestones": [
+    {
+      "name": "Lock baseline and CRM field",
+      "due": "2026-09-20",
+      "owner": "GTM Programs Manager AMER",
+      "done_when": "Primary metric source confirmed and written in program doc"
+    },
+    {
+      "name": "Enablement launch",
+      "due": "2026-10-01",
+      "owner": "AMER Seller Enablement Lead",
+      "done_when": "Target AEs completed practice drill"
+    },
+    {
+      "name": "First attribution review",
+      "due": "2026-11-05",
+      "owner": "GTM Programs Manager AMER",
+      "done_when": "Monthly readout with keep/iterate decision"
+    }
+  ]
+}

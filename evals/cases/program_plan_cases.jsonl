@@ -1,0 +1,2 @@
+{"id": "good_plan", "fixture": "fixtures/good_plan.json", "expect_pass": true}
+{"id": "weak_plan", "fixture": "fixtures/weak_plan.json", "expect_pass": false}

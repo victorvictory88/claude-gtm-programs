@@ -1,0 +1,27 @@
+{
+  "name": "AI Excellence Push",
+  "baseline": {
+    "audience": "sellers",
+    "geo": "everywhere",
+    "segment": "all accounts",
+    "launch_date": "soon",
+    "current_state_notes": "We will transform how teams sell with AI."
+  },
+  "metrics": [
+    {
+      "name": "More pipeline",
+      "role": "primary",
+      "unit": "",
+      "baseline_value": "a lot",
+      "source": "",
+      "owner": ""
+    }
+  ],
+  "owners": {
+    "program": "",
+    "sales_sponsor": "",
+    "enablement": "",
+    "analytics": ""
+  },
+  "milestones": []
+}

@@ -1,0 +1,29 @@
+{
+  "program_name": "AMER Mid-Market AI Discovery Play",
+  "audience": "AE + SE",
+  "geo": "AMER",
+  "segment": "Mid-market AI SaaS evaluations",
+  "launch_date": "2026-10-01",
+  "example_accounts": ["Acme Energy", "Northwind Retail"],
+  "baseline_hints": {
+    "qualified_opps_running_structured_discovery": "TBD - CRM field not live",
+    "avg_stage2_to_stage3_days": "TBD - analytics owner to confirm",
+    "play_adoption_percent_target_sellers": 0
+  },
+  "proposed_primary_metric": "Percent of qualified AMER mid-market opps with completed discovery checklist within 14 days of Stage 2",
+  "proposed_supporting_metrics": [
+    "Percent of target AEs who completed practice drill",
+    "Stage 2 to Stage 3 conversion vs prior quarter"
+  ],
+  "candidate_owners": {
+    "program": "GTM Programs Manager AMER",
+    "sales_sponsor": "AMER Mid-Market Sales Leader",
+    "enablement": "AMER Seller Enablement Lead",
+    "analytics": "GTM Analytics Partner"
+  },
+  "constraints": [
+    "No invented win rates or pipeline dollars",
+    "Baseline must be written before enablement launch",
+    "Fictional accounts only in examples"
+  ]
+}
