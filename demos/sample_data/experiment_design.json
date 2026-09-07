@@ -1,0 +1,57 @@
+{
+  "experiment": "Codebase analysis playbook staged rollout",
+  "segment_geo": "AMER enterprise software ICPs (fictional pattern; example account Acme Energy)",
+  "window": {
+    "start": "2026-10-01",
+    "end": "2027-03-31"
+  },
+  "baseline": {
+    "primary_metric": "Win rate on enterprise software ICPs using legacy pitch",
+    "primary_value": "TBD - last four quarters from CRM",
+    "supporting_metrics": [
+      "Average sales cycle days",
+      "Play adoption % on qualified opps"
+    ],
+    "source_system": "CRM + BI",
+    "owner": "GTM Analytics Partner"
+  },
+  "hypothesis": "If treatment reps complete three hours of technical enablement and run the new codebase analysis playbook, win rate rises vs control and cycle length falls within six months",
+  "design": {
+    "treatment": "25 randomly assigned AMER enterprise reps; new playbook + enablement",
+    "control": "25 randomly assigned AMER enterprise reps; legacy pitch only",
+    "assignment_method": "random stratified by tenure band",
+    "sample_sizes": {
+      "treatment": 25,
+      "control": 25
+    }
+  },
+  "staged_rollout": [
+    {
+      "stage": "0-25% (treatment only)",
+      "gate": "Adoption logged on >=70% of treatment qualified opps"
+    },
+    {
+      "stage": "Expand to 50% if gate met",
+      "gate": "Treatment win rate ahead of control with agreed confidence rule"
+    },
+    {
+      "stage": "100% scale",
+      "gate": "Decision log update + seller play packaged"
+    }
+  ],
+  "stop_scale_rules": {
+    "pause_if": "Data quality on play logging fails two consecutive weeks",
+    "iterate_if": "Adoption high but no win-rate separation at 90 days",
+    "scale_if": "Treatment outperforms control on primary metric at six months"
+  },
+  "causal_clarity_notes": [
+    "Control filters seasonality, competitor noise, and macro shifts shared by both groups",
+    "Remaining confounds: territory mix, AE tenure residual, SE capacity"
+  ],
+  "owners": {
+    "program": "GTM Programs Manager AMER",
+    "sales_sponsor": "AMER Enterprise Sales Leader",
+    "enablement": "AMER Seller Enablement Lead",
+    "analytics": "GTM Analytics Partner"
+  }
+}

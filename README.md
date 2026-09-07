@@ -2,21 +2,34 @@
 
 Public toolkit and reference for **Claude skills** applied to **GTM Programs** work.
 
-This repo shows how Claude skills, small demos, offline evals, and a short workshop fit real GTM Programs themes: baselines before launch, packaging wins into seller plays, attribution reviews, AI SaaS discovery coaching, and measured enablement.
+This repo shows how Claude skills, small demos, offline evals, and a short workshop fit real GTM Programs themes: baselines before launch, packaging wins into seller plays, attribution reviews, AI SaaS discovery coaching, measured enablement, decision logs, field experiments, operating cadence instrumentation, and operational Claude workflows.
 
 Author: **Albert Chan**  
 LinkedIn: [linkedin.com/in/albe88](https://www.linkedin.com/in/albe88)
 
 Fictional accounts only: **Acme Energy**, **Northwind Retail**. No real customer secrets.
 
+## What this toolkit encodes
+
+Empirical GTM methods you can inspect as skills, demos, and visuals:
+
+1. **Empirical loop** - observe → hypothesis → experiment → measure → package play
+2. **Measurement before launch** - baseline, targets, attribution method; no post-hoc bullseye
+3. **Control groups and staged rollouts** - isolate causal uplift from seasonality and luck
+4. **Decision log** - one version of truth; competing hypotheses with falsifiers; lead via legibility
+5. **Seller plays without you** - package wins so AEs/SEs run the motion from assets and CRM fields
+6. **Operating cadence** - surface program metrics in existing CRM/BI reviews, not slide-deck theater
+7. **Sourced vs influenced** - attribution that reconciles without double counting
+8. **Claude at operational volume** - ingest → retrieve → draft → validate → human review (RFP RAG pattern), not email polish
+
 ## What's inside
 
 | Folder | Maps to GTM Programs work |
 |--------|---------------------------|
-| `skills/` | Reusable agent instructions for baseline, play packaging, attribution, discovery, enablement |
-| `demos/` | Messages API demos: tool-use sales brief; structured JSON program plan |
+| `skills/` | Reusable agent instructions for baseline, plays, attribution, discovery, enablement, decision logs, experiments, cadence, Claude ops |
+| `demos/` | Messages API demos plus offline decision-log builder; sample JSON for experiments |
 | `evals/` | Offline rubric scoring for program plans (no API) |
-| `teaching/` | 45-minute workshop for business leaders + baseline exercise |
+| `teaching/` | 45-minute workshop, baseline exercise, control-group rollout exercise |
 
 **Default demo model:** `claude-sonnet-4-20250514` (override with `--model`).
 
@@ -29,9 +42,33 @@ Screenshots for a quick look without running code. Regenerate with `python scrip
 
 *Repo map: skills, demos, evals, and teaching folders.*
 
-![Five Claude skills as cards](docs/images/skills_grid.png)
+![Nine Claude skills as cards](docs/images/skills_grid.png)
 
-*Skills grid: program-baseline, seller-play-packager, attribution-review, discovery-coach, enablement-outline.*
+*Skills grid: baseline, plays, attribution, discovery, enablement, decision-log, experiment-design, operating-cadence, claude-ops-workflow.*
+
+![Empirical GTM loop](docs/images/empirical_gtm_loop.png)
+
+*Empirical GTM loop: observe → hypothesis → experiment → measure → package play.*
+
+![Measurement plan before launch](docs/images/measurement_before_launch.png)
+
+*Paint the bullseye first vs post-hoc metric selection (sharpshooter pattern).*
+
+![Control vs treatment field experiment](docs/images/control_group_rollout.png)
+
+*Control vs treatment staged rollout (fictional Acme Energy playbook).*
+
+![Decision log aligning Sales vs Marketing](docs/images/decision_log_truth.png)
+
+*Decision log as one version of truth across Sales and Marketing hypotheses.*
+
+![Sourced vs influenced attribution](docs/images/sourced_vs_influenced.png)
+
+*Sourced vs influenced attribution with a double-count check.*
+
+![Claude ops RFP RAG workflow](docs/images/claude_ops_rag_flow.png)
+
+*Operational Claude RFP workflow: ingest → retrieve → draft → validate → human review.*
 
 ![Program baseline card for fictional Acme Energy](docs/images/program_baseline_card.png)
 
@@ -76,9 +113,10 @@ pip install -r requirements.txt
 cp .env.example .env        # then set ANTHROPIC_API_KEY
 export ANTHROPIC_API_KEY=sk-ant-...
 
-# Demos (exit code 2 if key missing)
+# Demos (exit code 2 if key missing for 01/02)
 python demos/01_tool_use_sales_brief.py
 python demos/02_structured_program_plan.py --pretty
+python demos/03_decision_log_builder.py   # offline; no API key
 
 # Offline evals (no API key)
 python evals/harness.py
@@ -95,21 +133,29 @@ cp -R skills/seller-play-packager <YOUR_SKILLS_DIR>/seller-play-packager
 cp -R skills/attribution-review <YOUR_SKILLS_DIR>/attribution-review
 cp -R skills/discovery-coach <YOUR_SKILLS_DIR>/discovery-coach
 cp -R skills/enablement-outline <YOUR_SKILLS_DIR>/enablement-outline
+cp -R skills/decision-log <YOUR_SKILLS_DIR>/decision-log
+cp -R skills/experiment-design <YOUR_SKILLS_DIR>/experiment-design
+cp -R skills/operating-cadence <YOUR_SKILLS_DIR>/operating-cadence
+cp -R skills/claude-ops-workflow <YOUR_SKILLS_DIR>/claude-ops-workflow
 ```
 
 Each `SKILL.md` has YAML frontmatter (`name`, `description` starting with "use this when…") plus actionable instructions.
 
 ### Skills at a glance
 
-- **program-baseline** - lock metrics, owners, and scope before launch
-- **seller-play-packager** - turn a win pattern into a one-page seller play
-- **attribution-review** - monthly/quarterly readout with influence vs credit
+- **program-baseline** - measurement plan and metrics locked before launch
+- **seller-play-packager** - turn a win pattern into a one-page play sellers run without you
+- **attribution-review** - monthly/quarterly readout; sourced vs influenced without double counting
 - **discovery-coach** - AI SaaS discovery questions and post-call capture
 - **enablement-outline** - session design with leading and lagging adoption metrics
+- **decision-log** - one version of truth; competing hypotheses with falsifiers
+- **experiment-design** - baseline, hypothesis, control vs treatment, staged rollout
+- **operating-cadence** - instrument program metrics into existing CRM/BI reviews
+- **claude-ops-workflow** - operational-volume Claude/API workflows (RFP RAG pattern)
 
 ## Demos
 
-See `demos/README.md`. Both CLIs use `argparse` and the Anthropic Python SDK Messages API.
+See `demos/README.md`. CLIs 01-02 use `argparse` and the Anthropic Python SDK Messages API. Demo 03 builds a decision log offline from sample JSON.
 
 ## Evals
 
@@ -117,7 +163,7 @@ See `evals/README.md`. `harness.py` loads fixtures, scores baseline clarity / me
 
 ## Teaching
 
-See `teaching/README.md`. Workshop length: 45 minutes. Exercise: set a program baseline without inventing numbers.
+See `teaching/README.md`. Workshop length: 45 minutes. Exercises: set a program baseline; design a control-group staged rollout (Acme Energy, fictional).
 
 ## License
 

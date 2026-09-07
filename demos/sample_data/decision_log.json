@@ -1,0 +1,52 @@
+{
+  "decision": "AMER mid-market collateral focus Q4",
+  "date": "2026-09-15",
+  "context": "Sales wants bottom-funnel technical collateral for energy accounts; Marketing wants top-funnel brand for retail. Single version of truth needed before budget locks.",
+  "example_accounts": [
+    "Acme Energy",
+    "Northwind Retail"
+  ],
+  "competing_hypotheses": [
+    {
+      "team": "Sales",
+      "claim": "If we ship three SOC2-style technical one-pagers for energy ICPs, Stage 2 to Stage 3 conversion rises within 60 days",
+      "metric": "Stage 2 to Stage 3 conversion on Acme Energy-like opps",
+      "direction": "up vs prior 60 days",
+      "window_days": 60,
+      "source_system": "CRM",
+      "owner": "AMER Mid-Market Sales Leader",
+      "success_threshold": "TBD - analytics to set from baseline"
+    },
+    {
+      "team": "Marketing",
+      "claim": "If we run a Northwind Retail-style brand webinar series, MQL volume for mid-market retail rises within 60 days",
+      "metric": "Mid-market retail MQLs",
+      "direction": "up vs prior 60 days",
+      "window_days": 60,
+      "source_system": "MAP + CRM",
+      "owner": "AMER Demand Lead",
+      "success_threshold": "TBD - analytics to set from baseline"
+    }
+  ],
+  "chosen_path": "Hypothesis 1 (Sales technical collateral) for 60 days; Marketing hypothesis queued next",
+  "rationale": "Energy Stage 2 to Stage 3 friction is the clearer near-term bottleneck in the decision log; brand series deferred with a dated revisit",
+  "falsifiers": [
+    "No lift in Stage 2 to Stage 3 after 60 days with adequate sample",
+    "Collateral adoption below enablement threshold"
+  ],
+  "owners": {
+    "program": "GTM Programs Manager AMER",
+    "sales": "AMER Mid-Market Sales Leader",
+    "marketing": "AMER Demand Lead",
+    "analytics": "GTM Analytics Partner"
+  },
+  "follow_ups": {
+    "baseline_id": "baseline_amer_mm_discovery_2026q4",
+    "experiment_id": "exp_tech_collateral_holdout_2026q4",
+    "next_review": "2026-11-15"
+  },
+  "open_questions": [
+    "CRM field for collateral-touched opp exists?",
+    "Sample size for energy segment TBD"
+  ]
+}

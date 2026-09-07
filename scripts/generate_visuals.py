@@ -102,7 +102,7 @@ def make_architecture() -> None:
     draw.text((40, 68), "Public toolkit: Claude skills + GTM Programs reference", font=sub_f, fill=MUTED)
 
     boxes = [
-        ("skills/", "Reusable agent\ninstructions", "baseline, plays,\nattribution, discovery", ACCENT),
+        ("skills/", "Reusable agent\ninstructions", "baseline, experiments,\ndecision logs, Claude ops", ACCENT),
         ("demos/", "Messages API\nCLIs", "tool-use brief +\nstructured plan JSON", ACCENT2),
         ("evals/", "Offline rubric\nscoring", "fixtures + JSON\nsummary (no API)", ACCENT3),
         ("teaching/", "45-min workshop\n+ exercise", "baseline without\ninventing numbers", ACCENT4),
@@ -421,55 +421,47 @@ def make_program_plan_json() -> None:
 
 
 def make_skills_grid() -> None:
-    """Five skill cards in a grid."""
-    w, h = 1000, 620
+    """Skill cards in a grid (9 skills)."""
+    w, h = 1100, 780
     img = Image.new("RGB", (w, h), BG)
     draw = ImageDraw.Draw(img)
     title_f = font(26, bold=True)
-    label_f = font(16, bold=True)
-    body_f = font(13)
-    foot_f = font(12)
+    label_f = font(14, bold=True)
+    body_f = font(12)
+    foot_f = font(11)
 
-    draw.text((40, 28), "Claude skills for GTM Programs", font=title_f, fill=TEXT)
-    draw.text((40, 64), "Reusable agent instructions: baseline, plays, attribution, discovery, enablement", font=body_f, fill=MUTED)
+    draw.text((40, 24), "Claude skills for GTM Programs", font=title_f, fill=TEXT)
+    draw.text((40, 58), "Baselines, plays, attribution, discovery, enablement, decision logs, experiments, cadence, Claude ops", font=body_f, fill=MUTED)
 
     skills = [
-        ("program-baseline", "Lock metrics, owners,\nand scope before launch", ACCENT),
-        ("seller-play-packager", "Turn a win pattern into\na one-page seller play", ACCENT2),
-        ("attribution-review", "Monthly readout with\ninfluence vs credit", ACCENT3),
+        ("program-baseline", "Measurement plan and\nbaseline before launch", ACCENT),
+        ("seller-play-packager", "Package plays sellers\nrun without you", ACCENT2),
+        ("attribution-review", "Sourced vs influenced\nwithout double counting", ACCENT3),
         ("discovery-coach", "AI SaaS discovery\nquestions + post-call", ACCENT4),
         ("enablement-outline", "Session design with\nleading + lagging metrics", ACCENT5),
+        ("decision-log", "One version of truth;\ntestable hypotheses", (94, 234, 212)),
+        ("experiment-design", "Control vs treatment\nand staged rollout", (125, 211, 252)),
+        ("operating-cadence", "Instrument metrics into\nCRM/BI reviews", (253, 186, 116)),
+        ("claude-ops-workflow", "Operational Claude\nRFP RAG workflows", (196, 181, 253)),
     ]
 
-    # 3 on top row, 2 centered on bottom
-    card_w, card_h = 280, 200
-    gap = 24
-    top_y = 110
-    total_top = 3 * card_w + 2 * gap
-    start_x = (w - total_top) // 2
+    card_w, card_h = 320, 170
+    gap = 20
+    cols = 3
+    total_row = cols * card_w + (cols - 1) * gap
+    start_x = (w - total_row) // 2
+    top_y = 100
 
-    for i, (name, desc, color) in enumerate(skills[:3]):
-        x = start_x + i * (card_w + gap)
-        y = top_y
+    for i, (name, desc, color) in enumerate(skills):
+        row, col = divmod(i, cols)
+        x = start_x + col * (card_w + gap)
+        y = top_y + row * (card_h + gap)
         rounded_rect(draw, (x, y, x + card_w, y + card_h), CARD, outline=BORDER, width=2, radius=16)
         draw.rectangle((x, y, x + card_w, y + 8), fill=color)
-        draw.text((x + 18, y + 28), name, font=label_f, fill=color)
+        draw.text((x + 16, y + 24), name, font=label_f, fill=color)
         for j, line in enumerate(desc.split("\n")):
-            draw.text((x + 18, y + 70 + j * 22), line, font=body_f, fill=TEXT)
-        draw.text((x + 18, y + card_h - 36), "skills/" + name, font=foot_f, fill=MUTED)
-
-    bottom_y = top_y + card_h + gap
-    total_bot = 2 * card_w + gap
-    start_bot = (w - total_bot) // 2
-    for i, (name, desc, color) in enumerate(skills[3:]):
-        x = start_bot + i * (card_w + gap)
-        y = bottom_y
-        rounded_rect(draw, (x, y, x + card_w, y + card_h), CARD, outline=BORDER, width=2, radius=16)
-        draw.rectangle((x, y, x + card_w, y + 8), fill=color)
-        draw.text((x + 18, y + 28), name, font=label_f, fill=color)
-        for j, line in enumerate(desc.split("\n")):
-            draw.text((x + 18, y + 70 + j * 22), line, font=body_f, fill=TEXT)
-        draw.text((x + 18, y + card_h - 36), "skills/" + name, font=foot_f, fill=MUTED)
+            draw.text((x + 16, y + 58 + j * 20), line, font=body_f, fill=TEXT)
+        draw.text((x + 16, y + card_h - 32), "skills/" + name, font=foot_f, fill=MUTED)
 
     draw.text((40, h - 36), "Install by copying each folder into your skills directory", font=foot_f, fill=MUTED)
     img.save(OUT / "skills_grid.png", optimize=True)
@@ -694,6 +686,306 @@ def make_demo_tool_use_flow() -> None:
     img.save(OUT / "demo_tool_use_flow.png", optimize=True)
 
 
+
+def make_empirical_gtm_loop() -> None:
+    """Observe → hypothesis → experiment → measure → package play."""
+    w, h = 1000, 420
+    img = Image.new("RGB", (w, h), BG)
+    draw = ImageDraw.Draw(img)
+    title_f = font(24, bold=True)
+    label_f = font(14, bold=True)
+    body_f = font(12)
+    foot_f = font(12)
+
+    draw.text((40, 24), "Empirical GTM loop", font=title_f, fill=TEXT)
+    draw.text((40, 58), "Treat launches as hypotheses; package only what the data supports", font=body_f, fill=MUTED)
+
+    steps = [
+        ("1. Observe", "Instrument the\nfield and CRM", ACCENT),
+        ("2. Hypothesis", "If we do X,\nmetric Y moves", ACCENT2),
+        ("3. Experiment", "Control vs\ntreatment", ACCENT3),
+        ("4. Measure", "Uplift vs\nbaseline", ACCENT4),
+        ("5. Package play", "Sellers run it\nwithout you", ACCENT5),
+    ]
+    box_w, box_h = 150, 150
+    gap = 28
+    total = len(steps) * box_w + (len(steps) - 1) * gap
+    x0 = (w - total) // 2
+    y0 = 110
+    for i, (title, desc, color) in enumerate(steps):
+        x = x0 + i * (box_w + gap)
+        rounded_rect(draw, (x, y0, x + box_w, y0 + box_h), CARD, outline=BORDER, width=2, radius=14)
+        draw.rectangle((x, y0, x + box_w, y0 + 6), fill=color)
+        draw.text((x + 12, y0 + 24), title, font=label_f, fill=color)
+        for j, line in enumerate(desc.split("\n")):
+            draw.text((x + 12, y0 + 60 + j * 18), line, font=body_f, fill=TEXT)
+        if i < len(steps) - 1:
+            ax = x + box_w + 4
+            ay = y0 + box_h // 2
+            draw.line((ax, ay, ax + gap - 8, ay), fill=MUTED, width=2)
+            draw.polygon([(ax + gap - 8, ay), (ax + gap - 14, ay - 5), (ax + gap - 14, ay + 5)], fill=MUTED)
+
+    # Return arrow hint
+    draw.text((40, 300), "Loop: packaged plays feed the next observation cycle", font=body_f, fill=MUTED)
+    rounded_rect(draw, (40, 330, w - 40, 380), CARD, outline=BORDER, width=1, radius=10)
+    draw.text((60, 348), "Example segment (fictional): Acme Energy mid-market discovery motion", font=body_f, fill=TEXT)
+    draw.text((40, h - 28), "Pair with skills: experiment-design, program-baseline, seller-play-packager", font=foot_f, fill=MUTED)
+    img.save(OUT / "empirical_gtm_loop.png", optimize=True)
+
+
+def make_measurement_before_launch() -> None:
+    """Bullseye painted first vs sharpshooter fallacy (professional labels)."""
+    w, h = 1000, 520
+    img = Image.new("RGB", (w, h), BG)
+    draw = ImageDraw.Draw(img)
+    title_f = font(24, bold=True)
+    head_f = font(16, bold=True)
+    body_f = font(13)
+    foot_f = font(12)
+
+    draw.text((40, 24), "Measurement plan before launch", font=title_f, fill=TEXT)
+    draw.text((40, 58), "Paint the bullseye first. Do not select the metric after results land.", font=body_f, fill=MUTED)
+
+    # Left card: correct
+    lx1, ly1, lx2, ly2 = 40, 100, 480, 440
+    rounded_rect(draw, (lx1, ly1, lx2, ly2), CARD, outline=ACCENT2, width=2, radius=16)
+    draw.rectangle((lx1, ly1, lx2, ly1 + 8), fill=ACCENT2)
+    draw.text((lx1 + 24, ly1 + 28), "Do this", font=head_f, fill=ACCENT2)
+    draw.text((lx1 + 24, ly1 + 56), "Bullseye first", font=head_f, fill=TEXT)
+    # Target concentric circles
+    cx, cy, r = lx1 + 220, ly1 + 200, 90
+    for rr, col in [(90, (30, 64, 50)), (60, (20, 83, 45)), (30, ACCENT2)]:
+        draw.ellipse((cx - rr, cy - rr, cx + rr, cy + rr), outline=col, width=3)
+    draw.ellipse((cx - 6, cy - 6, cx + 6, cy + 6), fill=ACCENT2)
+    # Arrow pointing to center (shot after target)
+    draw.line((cx - 120, cy + 70, cx - 20, cy + 10), fill=TEXT, width=3)
+    draw.polygon([(cx - 20, cy + 10), (cx - 38, cy + 8), (cx - 28, cy + 24)], fill=TEXT)
+    draw.text((lx1 + 24, ly2 - 70), "Declare metric, baseline, and", font=body_f, fill=TEXT)
+    draw.text((lx1 + 24, ly2 - 48), "attribution method before launch", font=body_f, fill=TEXT)
+
+    # Right card: fallacy
+    rx1, ry1, rx2, ry2 = 520, 100, 960, 440
+    rounded_rect(draw, (rx1, ry1, rx2, ry2), CARD, outline=RED, width=2, radius=16)
+    draw.rectangle((rx1, ry1, rx2, ry1 + 8), fill=RED)
+    draw.text((rx1 + 24, ry1 + 28), "Avoid this", font=head_f, fill=RED)
+    draw.text((rx1 + 24, ry1 + 56), "Post-hoc bullseye (sharpshooter)", font=head_f, fill=TEXT)
+    # Scattered shots then painted circle
+    cx2, cy2 = rx1 + 220, ry1 + 200
+    shots = [(-40, -30), (50, 20), (-10, 45), (35, -40), (0, 5), (-55, 15), (20, 50)]
+    for dx, dy in shots:
+        draw.ellipse((cx2 + dx - 4, cy2 + dy - 4, cx2 + dx + 4, cy2 + dy + 4), fill=ACCENT3)
+    # Painted circle around a cluster
+    draw.ellipse((cx2 - 35, cy2 - 25, cx2 + 45, cy2 + 55), outline=RED, width=3)
+    draw.text((rx1 + 24, ry2 - 70), "Launch first, then pick whichever", font=body_f, fill=TEXT)
+    draw.text((rx1 + 24, ry2 - 48), "metric moved and claim victory", font=body_f, fill=TEXT)
+
+    draw.text((40, h - 36), "Skill: program-baseline  |  Example accounts fictional only", font=foot_f, fill=MUTED)
+    img.save(OUT / "measurement_before_launch.png", optimize=True)
+
+
+def make_control_group_rollout() -> None:
+    """Control vs treatment field experiment."""
+    w, h = 1000, 560
+    img = Image.new("RGB", (w, h), BG)
+    draw = ImageDraw.Draw(img)
+    title_f = font(24, bold=True)
+    head_f = font(15, bold=True)
+    body_f = font(13)
+    foot_f = font(12)
+
+    draw.text((40, 24), "Control vs treatment rollout", font=title_f, fill=TEXT)
+    draw.text((40, 58), "Field experiment pattern (fictional Acme Energy playbook)", font=body_f, fill=MUTED)
+
+    # Two columns
+    for x0, title, color, lines in [
+        (40, "Treatment (n=25)", ACCENT2, [
+            "New playbook + 3h enablement",
+            "Log play on qualified opps",
+            "Same seasonality / market as control",
+            "Primary metric tracked in CRM",
+        ]),
+        (520, "Control (n=25)", ACCENT3, [
+            "Legacy pitch only",
+            "No new playbook access",
+            "Same seasonality / market as treatment",
+            "Primary metric tracked in CRM",
+        ]),
+    ]:
+        rounded_rect(draw, (x0, 100, x0 + 440, 320), CARD, outline=BORDER, width=2, radius=14)
+        draw.rectangle((x0, 100, x0 + 440, 108), fill=color)
+        draw.text((x0 + 20, 124), title, font=head_f, fill=color)
+        y = 160
+        for line in lines:
+            draw.text((x0 + 20, y), "- " + line, font=body_f, fill=TEXT)
+            y += 28
+
+    # Bottom stages
+    rounded_rect(draw, (40, 350, 960, 500), CARD, outline=BORDER, width=2, radius=14)
+    draw.text((60, 370), "Staged rollout gates", font=head_f, fill=ACCENT)
+    stages = [
+        ("Stage A", "25% treatment", "Adoption gate"),
+        ("Stage B", "50% if lift", "Win-rate gate"),
+        ("Stage C", "Scale 100%", "Package play"),
+    ]
+    sw = 280
+    for i, (a, b, c) in enumerate(stages):
+        x = 60 + i * (sw + 20)
+        draw.text((x, 410), a, font=head_f, fill=ACCENT4)
+        draw.text((x, 438), b, font=body_f, fill=TEXT)
+        draw.text((x, 462), c, font=body_f, fill=MUTED)
+        if i < 2:
+            draw.line((x + 200, 430, x + sw - 10, 430), fill=MUTED, width=2)
+
+    draw.text((40, h - 36), "Skill: experiment-design  |  Control keeps uplift causally legible", font=foot_f, fill=MUTED)
+    img.save(OUT / "control_group_rollout.png", optimize=True)
+
+
+def make_decision_log_truth() -> None:
+    """One decision log aligning Sales vs Marketing hypotheses."""
+    w, h = 1000, 560
+    img = Image.new("RGB", (w, h), BG)
+    draw = ImageDraw.Draw(img)
+    title_f = font(24, bold=True)
+    head_f = font(15, bold=True)
+    body_f = font(13)
+    foot_f = font(12)
+
+    draw.text((40, 24), "Decision log: one version of truth", font=title_f, fill=TEXT)
+    draw.text((40, 58), "Lead without authority via legible, testable hypotheses", font=body_f, fill=MUTED)
+
+    # Sales card
+    rounded_rect(draw, (40, 100, 480, 300), CARD, outline=BORDER, width=2, radius=14)
+    draw.rectangle((40, 100, 480, 108), fill=ACCENT)
+    draw.text((60, 124), "Sales hypothesis", font=head_f, fill=ACCENT)
+    for i, line in enumerate([
+        "If we ship technical one-pagers",
+        "for Acme Energy-like ICPs,",
+        "Stage 2→3 conversion rises",
+        "within 60 days (CRM).",
+    ]):
+        draw.text((60, 160 + i * 22), line, font=body_f, fill=TEXT)
+
+    # Marketing card
+    rounded_rect(draw, (520, 100, 960, 300), CARD, outline=BORDER, width=2, radius=14)
+    draw.rectangle((520, 100, 960, 108), fill=ACCENT5)
+    draw.text((540, 124), "Marketing hypothesis", font=head_f, fill=ACCENT5)
+    for i, line in enumerate([
+        "If we run a Northwind Retail",
+        "brand webinar series,",
+        "mid-market retail MQLs rise",
+        "within 60 days (MAP + CRM).",
+    ]):
+        draw.text((540, 160 + i * 22), line, font=body_f, fill=TEXT)
+
+    # Center log
+    rounded_rect(draw, (140, 330, 860, 500), CARD, outline=ACCENT2, width=2, radius=14)
+    draw.rectangle((140, 330, 860, 338), fill=ACCENT2)
+    draw.text((160, 354), "Shared decision log", font=head_f, fill=ACCENT2)
+    rows = [
+        "Chosen path: Sales technical collateral for 60 days",
+        "Falsifier: no Stage 2→3 lift with adequate sample",
+        "Owners: Programs + Sales + Marketing + Analytics",
+        "Follow-up: baseline + experiment ids dated for review",
+    ]
+    y = 390
+    for r in rows:
+        draw.text((160, y), "- " + r, font=body_f, fill=TEXT)
+        y += 22
+
+    draw.text((40, h - 36), "Skill: decision-log  |  Charisma is noise; metrics are signal", font=foot_f, fill=MUTED)
+    img.save(OUT / "decision_log_truth.png", optimize=True)
+
+
+def make_sourced_vs_influenced() -> None:
+    """Attribution without double counting."""
+    w, h = 1000, 540
+    img = Image.new("RGB", (w, h), BG)
+    draw = ImageDraw.Draw(img)
+    title_f = font(24, bold=True)
+    head_f = font(15, bold=True)
+    body_f = font(13)
+    big_f = font(22, bold=True)
+    foot_f = font(12)
+
+    draw.text((40, 24), "Sourced vs influenced attribution", font=title_f, fill=TEXT)
+    draw.text((40, 58), "Credit rules that reconcile to real pipeline (fictional sample dollars)", font=body_f, fill=MUTED)
+
+    # Two buckets
+    rounded_rect(draw, (40, 100, 480, 300), CARD, outline=BORDER, width=2, radius=14)
+    draw.rectangle((40, 100, 480, 108), fill=ACCENT)
+    draw.text((60, 124), "Sourced", font=head_f, fill=ACCENT)
+    draw.text((60, 160), "Program is genesis of the opp", font=body_f, fill=TEXT)
+    draw.text((60, 190), "Was dormant or net-new", font=body_f, fill=MUTED)
+    draw.text((60, 230), "$4.0M sample", font=big_f, fill=TEXT)
+    draw.text((60, 270), "Owner: Demand / Programs", font=body_f, fill=MUTED)
+
+    rounded_rect(draw, (520, 100, 960, 300), CARD, outline=BORDER, width=2, radius=14)
+    draw.rectangle((520, 100, 960, 108), fill=ACCENT4)
+    draw.text((540, 124), "Influenced", font=head_f, fill=ACCENT4)
+    draw.text((540, 160), "Opp existed; program touched it", font=body_f, fill=TEXT)
+    draw.text((540, 190), "Velocity, ACV, or stage unblocked", font=body_f, fill=MUTED)
+    draw.text((540, 230), "$3.5M sample", font=big_f, fill=TEXT)
+    draw.text((540, 270), "Owner: Programs / Partners", font=body_f, fill=MUTED)
+
+    # Reconcile bar
+    rounded_rect(draw, (40, 330, 960, 480), CARD, outline=ACCENT2, width=2, radius=14)
+    draw.text((60, 350), "Double-count check", font=head_f, fill=ACCENT2)
+    draw.text((60, 390), "Closed-won in period (sample): $6.0M", font=body_f, fill=TEXT)
+    draw.text((60, 418), "If every team claims full sourced credit for the same dollars, totals blow past reality.", font=body_f, fill=TEXT)
+    draw.text((60, 446), "Rule: sourced and influenced stories must reconcile; prefer influence when genesis is unclear.", font=body_f, fill=MUTED)
+
+    draw.text((40, h - 36), "Skill: attribution-review  |  Fictional figures for toolkit demos only", font=foot_f, fill=MUTED)
+    img.save(OUT / "sourced_vs_influenced.png", optimize=True)
+
+
+def make_claude_ops_rag_flow() -> None:
+    """Operational Claude RFP workflow."""
+    w, h = 1100, 480
+    img = Image.new("RGB", (w, h), BG)
+    draw = ImageDraw.Draw(img)
+    title_f = font(24, bold=True)
+    label_f = font(13, bold=True)
+    body_f = font(11)
+    foot_f = font(12)
+
+    draw.text((40, 24), "Claude ops: enterprise RFP RAG workflow", font=title_f, fill=TEXT)
+    draw.text((40, 58), "Operational volume: ingest → retrieve → draft → validate → human review (not summarize-my-email)", font=body_f, fill=MUTED)
+
+    steps = [
+        ("1. Ingest", "RFP chunks +\nembeddings", ACCENT),
+        ("2. Retrieve", "Approved\nsecurity corpus", ACCENT2),
+        ("3. Draft", "Cited answers\nvia Messages API", ACCENT3),
+        ("4. Validate", "Self-critique vs\nsources", ACCENT4),
+        ("5. Human review", "SE sign-off\nbefore send", ACCENT5),
+    ]
+    box_w, box_h = 170, 150
+    gap = 24
+    total = len(steps) * box_w + (len(steps) - 1) * gap
+    x0 = (w - total) // 2
+    y0 = 110
+    for i, (title, desc, color) in enumerate(steps):
+        x = x0 + i * (box_w + gap)
+        rounded_rect(draw, (x, y0, x + box_w, y0 + box_h), CARD, outline=BORDER, width=2, radius=14)
+        draw.rectangle((x, y0, x + box_w, y0 + 6), fill=color)
+        draw.text((x + 12, y0 + 24), title, font=label_f, fill=color)
+        for j, line in enumerate(desc.split("\n")):
+            draw.text((x + 12, y0 + 60 + j * 18), line, font=body_f, fill=TEXT)
+        if i < len(steps) - 1:
+            ax = x + box_w + 4
+            ay = y0 + box_h // 2
+            draw.line((ax, ay, ax + gap - 8, ay), fill=MUTED, width=2)
+            draw.polygon([(ax + gap - 8, ay), (ax + gap - 14, ay - 5), (ax + gap - 14, ay + 5)], fill=MUTED)
+
+    rounded_rect(draw, (40, 300, w - 40, 420), CARD, outline=BORDER, width=2, radius=12)
+    draw.text((60, 320), "Contrast", font=label_f, fill=ACCENT3)
+    draw.text((60, 350), "Parlor trick: paste an email into chat and ask for a shorter version.", font=body_f, fill=MUTED)
+    draw.text((60, 378), "Operational volume: multi-step API workflow with ground truth retrieval, validation, and audit trail on real RFP throughput.", font=body_f, fill=TEXT)
+
+    draw.text((40, h - 36), "Skill: claude-ops-workflow  |  Fictional Acme Energy security packet pattern", font=foot_f, fill=MUTED)
+    img.save(OUT / "claude_ops_rag_flow.png", optimize=True)
+
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     make_architecture()
@@ -706,6 +998,12 @@ def main() -> None:
     make_attribution_review_dashboard()
     make_workshop_agenda()
     make_demo_tool_use_flow()
+    make_empirical_gtm_loop()
+    make_measurement_before_launch()
+    make_control_group_rollout()
+    make_decision_log_truth()
+    make_sourced_vs_influenced()
+    make_claude_ops_rag_flow()
     print(f"Wrote visuals to {OUT}")
     for p in sorted(OUT.glob("*.png")):
         print(f"  {p.name} ({p.stat().st_size} bytes)")

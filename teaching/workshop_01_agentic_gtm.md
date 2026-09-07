@@ -18,9 +18,10 @@
 
 1. **Agentic GTM is not "chat in Slack."** An agent follows instructions, may call tools, and should be checked with evals.
 2. **Programs need a baseline before launch.** Without a start state, attribution reviews become storytelling.
-3. **Skills are reusable GTM workflows.** Examples in this repo: program baseline, seller play packager, attribution review, discovery coach, enablement outline.
+3. **Skills are reusable GTM workflows.** Examples in this repo: program baseline, seller play packager, attribution review, discovery coach, enablement outline, decision log, experiment design, operating cadence, Claude ops workflow.
 4. **Measure adoption, not applause.** Leading metric: practice completion. Lagging metric: play logged on qualified opportunities.
 5. **Evals catch weak plans offline.** Rubric dimensions: baseline clarity, measurable metrics, named owners, no fluff.
+6. **Treat launches as experiments.** Baseline → hypothesis → control vs treatment → package the winning play.
 
 ## Demo pointers (optional if API key available)
 
@@ -33,6 +34,10 @@
 - Where do we currently launch enablement without a written baseline?
 - Which metric would we trust in a QBR for a new seller play?
 - Who owns analytics for that metric?
+
+## Optional extension
+
+If you have an extra 15 minutes, run `exercises/exercise_control_group.md` (Acme Energy staged rollout with a holdout).
 
 ## Close
 
