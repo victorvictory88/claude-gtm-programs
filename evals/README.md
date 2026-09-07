@@ -13,8 +13,8 @@ Rubric dimensions (see `rubrics/gtm_program.md`):
 
 Fixtures:
 
-- `fixtures/good_plan.json` — should pass
-- `fixtures/weak_plan.json` — should fail
+- `fixtures/good_plan.json` - should pass
+- `fixtures/weak_plan.json` - should fail
 
 ## Run
 
@@ -34,3 +34,6 @@ Prints a JSON summary with per-case scores. Exit code `1` if a case does not mat
 
 *Fixture-shaped program plan used by the offline evals.*
 
+![Attribution review dashboard mock](../docs/images/attribution_review_dashboard.png)
+
+*Related monthly readout shape (skill theme; not scored by the harness).*

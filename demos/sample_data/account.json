@@ -9,19 +9,35 @@
     "title": "VP Operations Technology",
     "priority": "Reduce field reporting cycle time"
   },
-  "tech_stack": ["SAP", "ServiceNow", "custom Python analytics"],
+  "tech_stack": [
+    "SAP",
+    "ServiceNow",
+    "custom Python analytics"
+  ],
   "current_pain": "Field crews file paper-heavy incident reports; summarization and routing take 3-5 days",
   "buying_stage": "Technical validation",
-  "competitors_mentioned": ["incumbent BI vendor", "internal LLM prototype"],
+  "competitors_mentioned": [
+    "incumbent BI vendor",
+    "internal LLM prototype"
+  ],
   "recent_activity": [
     "Discovery call completed 2026-08-12",
     "SE workshop scheduled for 2026-09-18",
     "Security questionnaire sent"
   ],
   "stakeholders": [
-    {"name": "Jordan Lee", "role": "Champion"},
-    {"name": "Sam Ortiz", "role": "Economic buyer (CIO office)"},
-    {"name": "Priya Nair", "role": "Security reviewer"}
+    {
+      "name": "Jordan Lee",
+      "role": "Champion"
+    },
+    {
+      "name": "Sam Ortiz",
+      "role": "Economic buyer (CIO office)"
+    },
+    {
+      "name": "Priya Nair",
+      "role": "Security reviewer"
+    }
   ],
-  "notes": "Fictional account for demo and interview use only. No real customer data."
+  "notes": "Fictional account for demo and toolkit use only. No real customer data."
 }

@@ -24,9 +24,9 @@
 
 ## Demo pointers (optional if API key available)
 
-- `demos/01_tool_use_sales_brief.py` — tool use then brief
-- `demos/02_structured_program_plan.py` — JSON program plan
-- `evals/harness.py` — offline score of good vs weak plans
+- `demos/01_tool_use_sales_brief.py` - tool use then brief
+- `demos/02_structured_program_plan.py` - JSON program plan
+- `evals/harness.py` - offline score of good vs weak plans
 
 ## Discussion prompts
 

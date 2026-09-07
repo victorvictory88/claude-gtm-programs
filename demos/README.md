@@ -16,7 +16,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 
 Both scripts exit with code `2` if `ANTHROPIC_API_KEY` is missing.
 
-## 01 — Tool use sales brief
+## 01 - Tool use sales brief
 
 Loads fictional `sample_data/account.json` (Acme Energy), calls a tool to extract account facts, then drafts a one-page sales brief.
 
@@ -25,7 +25,11 @@ python demos/01_tool_use_sales_brief.py
 python demos/01_tool_use_sales_brief.py --account demos/sample_data/account.json --model claude-sonnet-4-20250514
 ```
 
-## 02 — Structured program plan
+![Tool-use sales brief demo flow](../docs/images/demo_tool_use_flow.png)
+
+*Tool-use flow: load Acme Energy JSON, call tool, draft brief.*
+
+## 02 - Structured program plan
 
 Loads fictional `sample_data/program_inputs.json` and returns a JSON program plan with name, baseline, metrics, owners, and milestones.
 
@@ -35,8 +39,8 @@ python demos/02_structured_program_plan.py --pretty
 
 ## Sample data
 
-- `account.json` — Acme Energy (fictional)
-- `program_inputs.json` — AMER mid-market AI discovery play inputs (fictional; TBD baselines on purpose)
+- `account.json` - Acme Energy (fictional)
+- `program_inputs.json` - AMER mid-market AI discovery play inputs (fictional; TBD baselines on purpose)
 
 ## Visual examples
 
@@ -47,4 +51,3 @@ python demos/02_structured_program_plan.py --pretty
 ![Seller play one-pager for fictional Northwind Retail](../docs/images/seller_play_card.png)
 
 *Related seller-play packaging example (skill output style).*
-

@@ -1,15 +1,15 @@
 # claude-gtm-programs
 
-Public-safe portfolio for Albert Chan's Anthropic **GTM Programs Manager, AMER** interview.
+Public toolkit and reference for **Claude skills** applied to **GTM Programs** work.
 
-This repo shows how Claude skills, small demos, offline evals, and a short workshop fit real GTM Programs work: baselines before launch, packaging wins into seller plays, attribution reviews, AI SaaS discovery coaching, and measured enablement.
+This repo shows how Claude skills, small demos, offline evals, and a short workshop fit real GTM Programs themes: baselines before launch, packaging wins into seller plays, attribution reviews, AI SaaS discovery coaching, and measured enablement.
 
 Author: **Albert Chan**  
-Optional: [linkedin.com/in/albe88](https://www.linkedin.com/in/albe88)
+LinkedIn: [linkedin.com/in/albe88](https://www.linkedin.com/in/albe88)
 
 Fictional accounts only: **Acme Energy**, **Northwind Retail**. No real customer secrets.
 
-## What interviewers can scan quickly
+## What's inside
 
 | Folder | Maps to GTM Programs work |
 |--------|---------------------------|
@@ -23,11 +23,15 @@ Fictional accounts only: **Acme Energy**, **Northwind Retail**. No real customer
 
 ## Visual examples
 
-Screenshots for interviewers who want a quick look without running code. Regenerate with `python scripts/generate_visuals.py` (needs `pillow`).
+Screenshots for a quick look without running code. Regenerate with `python scripts/generate_visuals.py` (needs `pillow`).
 
 ![Repo architecture: skills, demos, evals, teaching](docs/images/architecture.png)
 
 *Repo map: skills, demos, evals, and teaching folders.*
+
+![Five Claude skills as cards](docs/images/skills_grid.png)
+
+*Skills grid: program-baseline, seller-play-packager, attribution-review, discovery-coach, enablement-outline.*
 
 ![Program baseline card for fictional Acme Energy](docs/images/program_baseline_card.png)
 
@@ -37,6 +41,14 @@ Screenshots for interviewers who want a quick look without running code. Regener
 
 *One-page seller play mock (Northwind Retail, fictional).*
 
+![Discovery coach flow](docs/images/discovery_coach_flow.png)
+
+*Discovery coach flow: context through post-call capture.*
+
+![Attribution review dashboard mock](docs/images/attribution_review_dashboard.png)
+
+*Mock monthly attribution review with influence vs credit.*
+
 ![Eval harness terminal JSON summary](docs/images/eval_harness_terminal.png)
 
 *Offline eval summary from `python evals/harness.py`.*
@@ -44,6 +56,14 @@ Screenshots for interviewers who want a quick look without running code. Regener
 ![Pretty sample structured program plan JSON](docs/images/program_plan_json.png)
 
 *Sample structured program plan JSON (from fixtures).*
+
+![Workshop agenda timeline](docs/images/workshop_agenda.png)
+
+*45-minute workshop agenda timeline.*
+
+![Tool-use sales brief demo flow](docs/images/demo_tool_use_flow.png)
+
+*Demo 01 tool-use flow: load account, call tool, draft brief.*
 
 
 ## Quickstart
