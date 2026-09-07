@@ -103,6 +103,35 @@ Screenshots for a quick look without running code. Regenerate with `python scrip
 *Demo 01 tool-use flow: load account, call tool, draft brief.*
 
 
+## Try this in 60 seconds
+
+No install required. Works in [Claude.ai](https://claude.ai) or Claude in Cursor.
+
+1. Open any skill file, for example [`skills/decision-log/SKILL.md`](skills/decision-log/SKILL.md) (raw view is easiest to copy).
+2. Copy the **entire** file (YAML frontmatter plus instructions).
+3. Paste it into a new Claude chat.
+4. Under it, paste a concrete ask like this:
+
+```
+Use the skill above.
+
+Sales wants 3 SOC2 white papers for financial services to cut cycle time.
+Marketing wants a healthcare brand campaign.
+Build a decision log with testable hypotheses, metrics, owners, and what would reverse the choice.
+Fictional company: Acme Energy.
+```
+
+Other quick tries:
+
+| Skill | Example ask to paste after the skill |
+|-------|--------------------------------------|
+| [`program-baseline`](skills/program-baseline/SKILL.md) | "Lock a measurement plan and baseline before we launch a Claude code-analysis play for enterprise software AEs. Segment: Acme Energy. Include primary metric, attribution method, and owners." |
+| [`experiment-design`](skills/experiment-design/SKILL.md) | "Design a staged rollout with control vs treatment for a new enablement playbook. 50 AEs, 6 months, win rate and cycle length as metrics. Defend why we need a control group." |
+| [`seller-play-packager`](skills/seller-play-packager/SKILL.md) | "Turn a winning Acme Energy pilot motion into a one-page seller play an AE can run without me in the room." |
+| [`claude-ops-workflow`](skills/claude-ops-workflow/SKILL.md) | "Design an operational-volume Claude workflow for enterprise RFPs: ingest, retrieve, draft, validate, human review. Contrast with just summarizing email." |
+
+Optional if you want to run code: clone the repo and use Quickstart below (`evals/harness.py` needs no API key).
+
 ## Quickstart
 
 ```bash
