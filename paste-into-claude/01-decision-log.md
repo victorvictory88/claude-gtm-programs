@@ -1,3 +1,5 @@
+Paste this entire file into Claude. It will run a demo immediately.
+
 ---
 name: decision-log
 description: use this when Sales, Marketing, Enablement, or Partnerships disagree on priorities and you need one version of the truth with testable hypotheses instead of opinion debates

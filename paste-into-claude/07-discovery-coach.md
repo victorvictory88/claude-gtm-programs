@@ -1,3 +1,5 @@
+Paste this entire file into Claude. It will run a demo immediately.
+
 ---
 name: discovery-coach
 description: use this when coaching AEs or SEs on AI SaaS discovery calls so questions map to pain, process, and decision criteria

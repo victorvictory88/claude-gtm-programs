@@ -1,3 +1,5 @@
+Paste this entire file into Claude. It will run a demo immediately.
+
 ---
 name: program-baseline
 description: use this when a GTM program is about to launch and you need a measurement plan and clear baseline before any enablement, play rollout, or attribution begins

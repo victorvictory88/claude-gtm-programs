@@ -1,3 +1,5 @@
+Paste this entire file into Claude. It will run a demo immediately.
+
 ---
 name: operating-cadence
 description: use this when program results must show up inside existing CRM and BI reviews (forecast, pipeline, QBR) instead of one-off slide decks

@@ -1,3 +1,5 @@
+Paste this entire file into Claude. It will run a demo immediately.
+
 ---
 name: claude-ops-workflow
 description: use this when designing Claude or API workflows that run at operational volume (multi-step retrieve, draft, validate) rather than one-off email polish

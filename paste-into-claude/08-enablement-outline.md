@@ -1,3 +1,5 @@
+Paste this entire file into Claude. It will run a demo immediately.
+
 ---
 name: enablement-outline
 description: use this when designing measured seller enablement so every session has an audience, learning goal, practice, and adoption metric

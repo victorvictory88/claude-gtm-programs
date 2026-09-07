@@ -27,6 +27,7 @@ Empirical GTM methods you can inspect as skills, demos, and visuals:
 | Folder | Maps to GTM Programs work |
 |--------|---------------------------|
 | `skills/` | Reusable agent instructions for baseline, plays, attribution, discovery, enablement, decision logs, experiments, cadence, Claude ops |
+| `paste-into-claude/` | One-paste Instant demos for Claude.ai (start with 01-decision-log) |
 | `demos/` | Messages API demos plus offline decision-log builder; sample JSON for experiments |
 | `evals/` | Offline rubric scoring for program plans (no API) |
 | `teaching/` | 45-minute workshop, baseline exercise, control-group rollout exercise |
@@ -105,32 +106,27 @@ Screenshots for a quick look without running code. Regenerate with `python scrip
 
 ## Try this in 60 seconds
 
-No install required. Works in [Claude.ai](https://claude.ai) or Claude in Cursor.
+No install required. Works in [Claude.ai](https://claude.ai).
 
-1. Open any skill file, for example [`skills/decision-log/SKILL.md`](skills/decision-log/SKILL.md) (raw view is easiest to copy).
-2. Copy the **entire** file (YAML frontmatter plus instructions).
-3. Paste it into a new Claude chat.
-4. Under it, paste a concrete ask like this:
+1. Open [`paste-into-claude/01-decision-log.md`](https://github.com/victorvictory88/claude-gtm-programs/blob/master/paste-into-claude/01-decision-log.md) (start with 01).
+2. Select all, copy, paste into a new Claude.ai chat.
+3. Watch the demo output appear. No second prompt needed.
 
-```
-Use the skill above.
+Each paste file tells Claude to run the Instant demo scenario immediately with fictional Acme Energy or Northwind Retail data.
 
-Sales wants 3 SOC2 white papers for financial services to cut cycle time.
-Marketing wants a healthcare brand campaign.
-Build a decision log with testable hypotheses, metrics, owners, and what would reverse the choice.
-Fictional company: Acme Energy.
-```
+| Start with | Paste file | Skill |
+|------------|------------|-------|
+| 01 | [`paste-into-claude/01-decision-log.md`](https://github.com/victorvictory88/claude-gtm-programs/blob/master/paste-into-claude/01-decision-log.md) | decision-log |
+| 02 | [`paste-into-claude/02-program-baseline.md`](https://github.com/victorvictory88/claude-gtm-programs/blob/master/paste-into-claude/02-program-baseline.md) | program-baseline |
+| 03 | [`paste-into-claude/03-experiment-design.md`](https://github.com/victorvictory88/claude-gtm-programs/blob/master/paste-into-claude/03-experiment-design.md) | experiment-design |
+| 04 | [`paste-into-claude/04-seller-play-packager.md`](https://github.com/victorvictory88/claude-gtm-programs/blob/master/paste-into-claude/04-seller-play-packager.md) | seller-play-packager |
+| 05 | [`paste-into-claude/05-claude-ops-workflow.md`](https://github.com/victorvictory88/claude-gtm-programs/blob/master/paste-into-claude/05-claude-ops-workflow.md) | claude-ops-workflow |
+| 06 | [`paste-into-claude/06-attribution-review.md`](https://github.com/victorvictory88/claude-gtm-programs/blob/master/paste-into-claude/06-attribution-review.md) | attribution-review |
+| 07 | [`paste-into-claude/07-discovery-coach.md`](https://github.com/victorvictory88/claude-gtm-programs/blob/master/paste-into-claude/07-discovery-coach.md) | discovery-coach |
+| 08 | [`paste-into-claude/08-enablement-outline.md`](https://github.com/victorvictory88/claude-gtm-programs/blob/master/paste-into-claude/08-enablement-outline.md) | enablement-outline |
+| 09 | [`paste-into-claude/09-operating-cadence.md`](https://github.com/victorvictory88/claude-gtm-programs/blob/master/paste-into-claude/09-operating-cadence.md) | operating-cadence |
 
-Other quick tries:
-
-| Skill | Example ask to paste after the skill |
-|-------|--------------------------------------|
-| [`program-baseline`](skills/program-baseline/SKILL.md) | "Lock a measurement plan and baseline before we launch a Claude code-analysis play for enterprise software AEs. Segment: Acme Energy. Include primary metric, attribution method, and owners." |
-| [`experiment-design`](skills/experiment-design/SKILL.md) | "Design a staged rollout with control vs treatment for a new enablement playbook. 50 AEs, 6 months, win rate and cycle length as metrics. Defend why we need a control group." |
-| [`seller-play-packager`](skills/seller-play-packager/SKILL.md) | "Turn a winning Acme Energy pilot motion into a one-page seller play an AE can run without me in the room." |
-| [`claude-ops-workflow`](skills/claude-ops-workflow/SKILL.md) | "Design an operational-volume Claude workflow for enterprise RFPs: ingest, retrieve, draft, validate, human review. Contrast with just summarizing email." |
-
-Optional if you want to run code: clone the repo and use Quickstart below (`evals/harness.py` needs no API key).
+Optional: clone the repo and use Quickstart below for demos and evals (`evals/harness.py` needs no API key).
 
 ## Quickstart
 

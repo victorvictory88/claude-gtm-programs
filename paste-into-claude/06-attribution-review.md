@@ -1,3 +1,5 @@
+Paste this entire file into Claude. It will run a demo immediately.
+
 ---
 name: attribution-review
 description: use this when you need a monthly or quarterly GTM attribution review that separates sourced from influenced pipeline and program influence from coincidence without double counting

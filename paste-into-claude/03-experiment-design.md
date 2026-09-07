@@ -1,3 +1,5 @@
+Paste this entire file into Claude. It will run a demo immediately.
+
 ---
 name: experiment-design
 description: use this when a GTM launch needs a baseline, hypothesis, control vs treatment design, and staged rollout so uplift claims stay causal

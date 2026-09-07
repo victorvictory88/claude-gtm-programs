@@ -1,3 +1,5 @@
+Paste this entire file into Claude. It will run a demo immediately.
+
 ---
 name: seller-play-packager
 description: use this when a deal win, loss insight, or field experiment win should become a reusable seller play that AEs and SEs can run without the program owner in the room
