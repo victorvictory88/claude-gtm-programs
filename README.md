@@ -1,6 +1,6 @@
-# claude-gtm-programs
+# GTM_Sales
 
-Public toolkit and reference for **Claude skills** applied to **GTM Programs** work.
+Public toolkit and reference for **Claude skills** applied to **GTM Sales** work.
 
 This repo shows how Claude skills, small demos, offline evals, and a short workshop fit real GTM Programs themes: baselines before launch, packaging wins into seller plays, attribution reviews, AI SaaS discovery coaching, measured enablement, decision logs, field experiments, operating cadence instrumentation, and operational Claude workflows.
 
